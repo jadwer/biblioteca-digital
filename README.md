@@ -76,3 +76,8 @@ En esta versión se han realizado cambios debido a la incompatibilidad del SDK d
 ---
 ## Nota importante:
 Se ha actualizado la biblioteca `"expo-permissions"` a la versión `^14.1.1` ya que está explicado en el curso, sin embargo, no está recomendado seguir usándolo y se recomienda usar los permisos específicos como `expo-camera` ya que retirarán el uso del anterior.
+
+## Recomendaciones
+* Agregar un "loading" en la sección de búsqueda
+* Agregar un "No hay documentos" o código de error si no se carga nada
+* Agregar un "Carcando más transacciones" cuando se scrolee hasta el límite (10) con un mensaje de "cargando"

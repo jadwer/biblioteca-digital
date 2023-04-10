@@ -20,7 +20,7 @@ export class BottomTabNavigator extends Component {
               iconName = "search";
             }
 
-            // You can return any component that you like here!
+            // Aquí tu puedes regresar el componente que te guste!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: "#FFFFFF",
