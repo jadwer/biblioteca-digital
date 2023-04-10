@@ -33,9 +33,10 @@ export class Login extends Component {
         this.props.navigation.navigate("BottomTab");
       })
       .catch((error) => {
-        Alert.alert("¡Algo salió mal, intenta nuevamente!");
+        Alert.alert("¡Datos incorrectos, intenta nuevamente!");
         const errorCode = error.code;
         const errorMessage = error.message;
+        Alert.alert("¡Datos incorrectos, intenta nuevamente!");
       });
   };
 
@@ -51,14 +52,14 @@ export class Login extends Component {
             <TextInput
               style={styles.textinput}
               onChangeText={(text) => this.setState({ email: text })}
-              placeholder={"Enter Email"}
+              placeholder={"Correo electrónico"}
               placeholderTextColor={"#FFFFFF"}
               autoFocus
             />
             <TextInput
               style={[styles.textinput, { marginTop: 20 }]}
               onChangeText={(text) => this.setState({ password: text })}
-              placeholder={"Enter Password"}
+              placeholder={"Contraseña"}
               placeholderTextColor={"#FFFFFF"}
               secureTextEntry
             />
@@ -68,7 +69,7 @@ export class Login extends Component {
                 this.handleLogin(this.state.email, this.state.password)
               }
             >
-              <Text style={styles.buttonText}>Login</Text>
+              <Text style={styles.buttonText}>Entrar</Text>
             </TouchableOpacity>
           </View>
         </ImageBackground>

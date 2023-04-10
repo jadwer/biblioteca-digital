@@ -83,9 +83,9 @@ export class Transaction extends Component {
 
     if (!transactionType) {
       this.setState({ bookId: "", studentId: "" });
-      // For Android users only
-      // ToastAndroid.show("The book doesn't exist in the library database!", ToastAndroid.SHORT);
-      Alert.alert("The book doesn't exist in the library database!");
+      // Solo para usuarios de Android
+      // ToastAndroid.show("¡El libro no existe en la base de datos!", ToastAndroid.SHORT);
+      Alert.alert("¡El libro no existe en la base de datos!");
     } else if (transactionType === "issue") {
       var isEligible = await this.checkStudentEligibilityForBookIssue(
         studentId
@@ -94,7 +94,7 @@ export class Transaction extends Component {
       if (isEligible == true) {
         var { bookName, studentName } = this.state;
         this.initiateBookIssue(bookId, studentId, bookName, studentName);
-        Alert.alert("Book issued to the student!");
+        Alert.alert("¡Libro prestado al estudiante!");
       }
     } else {
       var isEligible = await this.checkStudentEligibilityForBookReturn(
@@ -108,7 +108,7 @@ export class Transaction extends Component {
       }
       // For Android users only
       // ToastAndroid.show("Book returned to the library!", ToastAndroid.SHORT);
-      Alert.alert("Book returned to the library!");
+      Alert.alert("¡Libro regresado a la biblioteca!");
     }
   };
 
@@ -156,8 +156,8 @@ export class Transaction extends Component {
       transactionType = false;
     } else {
       bookRef.docs.map((doc) => {
-        //if the book is available then transaction type will be issue
-        // otherwise it will be return
+        // Si el libro está disponible, entonces el tipo de de transacción será préstamo (issue)
+        // de lo contrario, será regreso (return)
         transactionType = doc.data().book_details.is_book_available
           ? "issue"
           : "return";
@@ -183,14 +183,14 @@ export class Transaction extends Component {
         studentId: "",
       });
       isStudentEligible = false;
-      Alert.alert("The student id doesn't exist in the database!");
+      Alert.alert("¡El estudiante no existe en la base de datos!");
     } else {
       studentRef.docs.map((doc) => {
         if (doc.data().number_of_books_issued < 2) {
           isStudentEligible = true;
         } else {
           isStudentEligible = false;
-          Alert.alert("The student has already issued 2 books!");
+          Alert.alert("¡El estudiante ya tiene 2 libros!");
           this.setState({
             bookId: "",
             studentId: "",
@@ -217,7 +217,7 @@ export class Transaction extends Component {
         isStudentEligible = true;
       } else {
         isStudentEligible = false;
-        Alert.alert("The book wasn't issued by this student!");
+        Alert.alert("¡El libro no se le prestó a este estudiante!");
         this.setState({
           bookId: "",
           studentId: "",
@@ -300,7 +300,7 @@ export class Transaction extends Component {
             <View style={styles.textinputContainer}>
               <TextInput
                 style={styles.textinput}
-                placeholder={"Book Id"}
+                placeholder={"Id del libro"}
                 placeholderTextColor={"#FFFFFF"}
                 value={bookId}
                 onChangeText={(text) => this.setState({ bookId: text })}
@@ -309,13 +309,13 @@ export class Transaction extends Component {
                 style={styles.scanbutton}
                 onPress={() => this.getCameraPermissions("bookId")}
               >
-                <Text style={styles.scanbuttonText}>Scan</Text>
+                <Text style={styles.scanbuttonText}>Escanear</Text>
               </TouchableOpacity>
             </View>
             <View style={[styles.textinputContainer, { marginTop: 25 }]}>
               <TextInput
                 style={styles.textinput}
-                placeholder={"Student Id"}
+                placeholder={"Id del estudiante"}
                 placeholderTextColor={"#FFFFFF"}
                 value={studentId}
                 onChangeText={(text) => this.setState({ studentId: text })}
@@ -324,14 +324,14 @@ export class Transaction extends Component {
                 style={styles.scanbutton}
                 onPress={() => this.getCameraPermissions("studentId")}
               >
-                <Text style={styles.scanbuttonText}>Scan</Text>
+                <Text style={styles.scanbuttonText}>Escanear</Text>
               </TouchableOpacity>
             </View>
             <TouchableOpacity
               style={[styles.button, { marginTop: 25 }]}
               onPress={this.handleTransaction}
             >
-              <Text style={styles.buttonText}>Submit</Text>
+              <Text style={styles.buttonText}>Enviar</Text>
             </TouchableOpacity>
           </View>
         </ImageBackground>

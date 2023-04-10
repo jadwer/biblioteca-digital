@@ -14,9 +14,9 @@ export class BottomTabNavigator extends Component {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === "Transaction") {
+            if (route.name === "Transacción") {
               iconName = "book";
-            } else if (route.name === "Search") {
+            } else if (route.name === "Búsqueda") {
               iconName = "search";
             }
 
@@ -39,6 +39,7 @@ export class BottomTabNavigator extends Component {
             justifyContent: "center",
             backgroundColor: "#5653d4",
           },
+          headerShown: false,
           tabBarLabelPosition: "beside-icon",
           tabBarStyle: [
             {
@@ -48,8 +49,8 @@ export class BottomTabNavigator extends Component {
           ],
         })}
       >
-        <Tab.Screen name="Transaction" component={Transaction} />
-        <Tab.Screen name="Search" component={Search} />
+        <Tab.Screen name="Transacción" component={Transaction} />
+        <Tab.Screen name="Búsqueda" component={Search} />
       </Tab.Navigator>
     );
   }

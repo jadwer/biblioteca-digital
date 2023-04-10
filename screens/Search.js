@@ -183,7 +183,7 @@ export class Search extends Component {
             <TextInput
               style={styles.textinput}
               onChangeText={(text) => this.setState({ searchText: text })}
-              placeholder={"Book Id"}
+              placeholder={"Id del libro o estudiante"}
               placeholderTextColor={"#FFFFFF"}
             />
             <TouchableOpacity
